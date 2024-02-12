@@ -9,12 +9,33 @@
     </body>
         
     <script>
-        const x = ["R", "P", "S"]
+        const x = ["ROCK", "PAPER", "SCISSORS"]
 
         function getComputerChoice() {
           return x[Math.floor(Math.random() * 3)];
         }
-        console.log(getComputerChoice())
+
+        function game(playerSelection, computerSelection) {
+            computerSelection = getComputerChoice()
+            console.log(computerSelection)
+            playerSelection = prompt("Please enter your choice").toUpperCase()
+            
+            if (playerSelection == computerSelection) {
+                alert("Tie!");
+            } else if (playerSelection == "ROCK" & computerSelection == "PAPER" || 
+            playerSelection == "PAPER" & computerSelection == "SCISSORS" ||
+            playerSelection == "SCISSORS" & computerSelection == "ROCK") {
+                alert("You lose! " + computerSelection.charAt(0) + computerSelection.substring(1).toLowerCase() +
+                 " beats " + playerSelection.toLowerCase())
+            } else if (computerSelection == "ROCK" & playerSelection == "PAPER" || 
+            computerSelection == "PAPER" & playerSelection == "SCISSORS" ||
+            computerSelection == "SCISSORS" & playerSelection == "ROCK") {
+                alert("You win! " + playerSelection.charAt(0) + playerSelection.substring(1).toLowerCase() +
+                 " beats " + computerSelection.toLowerCase())
+            }
+        }
+
+        game()
     </script>
 
 </html>
