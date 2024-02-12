@@ -10,6 +10,7 @@
         
     <script>
         const x = ["ROCK", "PAPER", "SCISSORS"]
+        var status
 
         function getComputerChoice() {
           return x[Math.floor(Math.random() * 3)];
@@ -22,20 +23,59 @@
             
             if (playerSelection == computerSelection) {
                 alert("Tie!");
+                status = "TIE"
             } else if (playerSelection == "ROCK" & computerSelection == "PAPER" || 
             playerSelection == "PAPER" & computerSelection == "SCISSORS" ||
             playerSelection == "SCISSORS" & computerSelection == "ROCK") {
                 alert("You lose! " + computerSelection.charAt(0) + computerSelection.substring(1).toLowerCase() +
                  " beats " + playerSelection.toLowerCase())
+                 status = "LOSS"
             } else if (computerSelection == "ROCK" & playerSelection == "PAPER" || 
             computerSelection == "PAPER" & playerSelection == "SCISSORS" ||
             computerSelection == "SCISSORS" & playerSelection == "ROCK") {
                 alert("You win! " + playerSelection.charAt(0) + playerSelection.substring(1).toLowerCase() +
                  " beats " + computerSelection.toLowerCase())
+                 status = "WIN"
+            } else if (playerSelection != "ROCK" || playerSelection != "PAPER" || playerSelection != "SCISSORS") {
+                alert("Invalid input!")
             }
         }
 
-        game()
+      
+        function playGame() {
+            var playerCounter = 0
+            var computerCounter = 0
+
+            for (let i = 1; i < 6; i++) {
+                game()
+
+                if (status == "WIN") {
+                playerCounter++
+                     console.log("WIN")
+               } else if (status == "LOSS") {
+                computerCounter++
+                console.log("LOSS")
+               } else if (status == "TIE") {
+                computerCounter++
+                playerCounter++
+                console.log("TIE")
+               } 
+
+              console.log("Round: " + i + ". Player: " + playerCounter + 
+              ". Computer: " + computerCounter + ".")
+              
+             }
+
+             if (playerCounter > computerCounter) {
+                alert("You win! You: " + playerCounter + " Computer: " + computerCounter)
+             } else if (playerCounter == computerCounter) {
+                alert("Game was a tie. You: " + playerCounter + " Computer: " + computerCounter)
+                } else if (playerCounter < computerCounter) {
+                alert("You lose! You: " + playerCounter + " Computer: " + computerCounter)
+                }
+            }
+   
+            playGame()
     </script>
 
 </html>
