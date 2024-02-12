@@ -7,9 +7,31 @@
 
     <body>
     </body>
-
+        
     <script>
+        const x = ["R", "P", "S"]
 
+        function getComputerChoice() {
+          return x[Math.floor(Math.random() * 3)];
+        }
+        console.log(getComputerChoice())
     </script>
 
 </html>
+
+
+<!--Create an array: [Rock, paper, scisscors]
+    Function getComputerChoice:
+    Begin with generating a random number (0 to 1) and multiply by 3. Round to the nearest int.
+    Store in index.
+    Use randomly generated index to retreive one of those values. 
+
+
+    Ask for user input, case-insensitive, rock paper or scisscors which is stored
+    in variable 'playerSelection'
+
+    Switch statement to account for all possible outcomes
+    
+    Output message after game: "You Lose/Win! ____ beats ____"
+
+-->
